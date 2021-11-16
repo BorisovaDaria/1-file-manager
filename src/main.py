@@ -41,6 +41,30 @@ def make_file(user_input):
     else:
         Path.touch(Path.cwd() / user_input[1])
 
+def write_in_file(user_input):
+    if len(user_input) < 3:
+        print("2 Arguments Expected")
+    else:
+        p = Path(Path.cwd() / user_input[1])
+        p.write_text(user_input[2])
+
+def view(user_input):
+    if len(user_input) < 2:
+        print("Argument expected")
+    else:
+        print(Path.read_text(Path.cwd() / user_input[1]))
+
+def remove_file(user_input):
+    if len(user_input) < 2:
+        print("Argument expected")
+    else:
+        Path.unlink(Path.cwd() / user_input[1])
+
+def rename_file(user_input):
+    if len(user_input) < 3:
+        print("2 Arguments expected")
+    else:
+        Path.rename(Path.cwd() / user_input[1], user_input[2])
 
 def main():
 
@@ -57,6 +81,18 @@ def main():
 
         elif user_input[0] == "mkfile":
             make_file(user_input)
+
+        elif user_input[0] == "wrtinfile":
+            write_in_file(user_input)
+
+        elif user_input[0] == "view":
+            view(user_input)
+
+        elif user_input[0] == "rmfile":
+            remove_file(user_input)
+
+        elif user_input[0] == "rnfile":
+            rename_file(user_input)
 
         else:
             print("Unknown command!")
